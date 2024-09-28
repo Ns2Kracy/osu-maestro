@@ -7,11 +7,6 @@ license = ""
 repository = "https://github.com/Ns2KRacy/maestro"
 edition = "2021"
 
-[lib]
-name = "osu_maestro_lib"
-crate-type = ["staticlib", "cdylib", "rlib"]
-
-
 [build-dependencies]
 tauri-build = { version = "2.0.0-rc", features = [] }
 
@@ -19,11 +14,11 @@ tauri-build = { version = "2.0.0-rc", features = [] }
 # tauri related
 tauri = { version = "2.0.0-rc", features = [] }
 tauri-plugin-shell = "2.0.0-rc"
-tauri-plugin-devtools = "2.0.0-rc"
-tauri-plugin-updater = "2.0.0-rc"
 tauri-plugin-dialog = "2.0.0-rc"
 tauri-plugin-websocket = "2.0.0-rc"
 
+# async runtime
+tokio = { version = "1.40.0", features = ["full"] }
 
 # serialization and deserialization
 serde = { version = "1", features = ["derive"] }
