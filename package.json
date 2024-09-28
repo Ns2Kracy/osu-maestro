@@ -1,0 +1,35 @@
+{
+  "name": "maestro",
+  "private": true,
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "start": "vinxi start",
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "serve": "vinxi serve",
+    "tauri": "tauri",
+    "format": "prettier --write src"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@solidjs/router": "^0.14.7",
+    "@solidjs/start": "^1.0.8",
+    "@tauri-apps/api": "2.0.0-rc.0",
+    "@tauri-apps/plugin-shell": "2.0.0-rc.1",
+    "solid-js": "^1.9.1",
+    "tailwindcss": "^3.4.13",
+    "vinxi": "^0.4.3"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.0.0-rc.0",
+    "autoprefixer": "^10.4.20",
+    "internal-ip": "^8.0.0",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-plugin-solid": "^2.10.2"
+  }
+}
