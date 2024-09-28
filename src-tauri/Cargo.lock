@@ -2528,44 +2528,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c41e0c4fef86961ac6d6f8a82609f55f31b05e4fce149ac5710e439df7619ba4"
 
 [[package]]
-name = "maestro"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "axum 0.7.7",
- "axum-extra",
- "bcrypt",
- "chrono",
- "config",
- "data-encoding",
- "futures",
- "futures-util",
- "hyper 1.4.1",
- "once_cell",
- "rand 0.8.5",
- "ring",
- "serde",
- "serde_json",
- "specta",
- "specta-typescript",
- "tauri",
- "tauri-build",
- "tauri-plugin-devtools",
- "tauri-plugin-dialog",
- "tauri-plugin-shell",
- "tauri-plugin-updater",
- "tauri-specta",
- "thiserror",
- "tower 0.4.13",
- "tower-http 0.5.2",
- "tracing",
- "tracing-appender",
- "tracing-subscriber",
- "utoipa",
- "utoipa-redoc",
-]
-
-[[package]]
 name = "malloc_buf"
 version = "0.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3026,6 +2988,44 @@ checksum = "5ffd2b0a5634335b135d5728d84c5e0fd726954b87111f7506a61c502280d982"
 dependencies = [
  "libc",
  "windows-sys 0.59.0",
+]
+
+[[package]]
+name = "osu_maestro"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "axum 0.7.7",
+ "axum-extra",
+ "bcrypt",
+ "chrono",
+ "config",
+ "data-encoding",
+ "futures",
+ "futures-util",
+ "hyper 1.4.1",
+ "once_cell",
+ "rand 0.8.5",
+ "ring",
+ "serde",
+ "serde_json",
+ "specta",
+ "specta-typescript",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-devtools",
+ "tauri-plugin-dialog",
+ "tauri-plugin-shell",
+ "tauri-plugin-updater",
+ "tauri-specta",
+ "thiserror",
+ "tower 0.4.13",
+ "tower-http 0.5.2",
+ "tracing",
+ "tracing-appender",
+ "tracing-subscriber",
+ "utoipa",
+ "utoipa-redoc",
 ]
 
 [[package]]

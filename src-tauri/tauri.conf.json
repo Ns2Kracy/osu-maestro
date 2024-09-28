@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
-  "productName": "maestro",
-  "identifier": "maestro.ns2kracy.com",
+  "productName": "osu-maestro",
+  "identifier": "osu-maestro.ns2kracy.com",
   "build": {
     "beforeDevCommand": "bun dev",
     "devUrl": "http://localhost:3000",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "maestro",
+        "title": "Osu Maestro",
         "width": 800,
         "height": 600
       }

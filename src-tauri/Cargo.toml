@@ -1,5 +1,5 @@
 [package]
-name = "maestro"
+name = "osu_maestro"
 version = "0.0.0"
 description = "Maestro"
 authors = ["you"]
@@ -8,7 +8,7 @@ repository = "https://github.com/Ns2KRacy/maestro"
 edition = "2021"
 
 [lib]
-name = "maestro_lib"
+name = "osu_maestro_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 
