@@ -2,20 +2,21 @@
 name = "osu_maestro"
 version = "0.0.0"
 description = "Maestro"
-authors = ["you"]
+authors = ["Ns2Kracy"]
 license = ""
 repository = "https://github.com/Ns2KRacy/maestro"
 edition = "2021"
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc", features = [] }
+tauri-build = { version = "2.0.0", features = [] }
 
 [dependencies]
 # tauri related
-tauri = { version = "2.0.0-rc", features = [] }
+tauri = { version = "2.0.0", features = [] }
 tauri-plugin-shell = "2.0.0-rc"
 tauri-plugin-dialog = "2.0.0-rc"
 tauri-plugin-websocket = "2.0.0-rc"
+# tauri-plugin-devtools = "2.0.0-rc"
 
 # async runtime
 tokio = { version = "1.40.0", features = ["full"] }
@@ -33,11 +34,11 @@ anyhow = "1.0.86"
 thiserror = "1.0.63"
 
 # web framework
-axum = { version = "0.7.5", features = ["tracing", "ws"] }
+axum = { version = "0.7.7", features = ["tracing", "ws"] }
 axum-extra = { version = "0.9.3", features = ["cookie", "typed-header"] }
 hyper = { version = "1.4.1", features = ["full"] }
-tower = { version = "0.4.13", features = ["full"] }
-tower-http = { version = "0.5.2", features = ["full"] }
+tower = { version = "0.5.1", features = ["full"] }
+tower-http = { version = "0.6.1", features = ["full"] }
 
 # crypto
 bcrypt = "0.15.1"
@@ -58,7 +59,7 @@ once_cell = "1.19.0"
 config = "0.14.0"
 specta = "=2.0.0-rc.20"
 specta-typescript = "0.0.7"
-tauri-specta = { version = "=2.0.0-rc.15", features = [
+tauri-specta = { version = "=2.0.0-rc.20", features = [
     "derive",
     "javascript",
     "typescript",

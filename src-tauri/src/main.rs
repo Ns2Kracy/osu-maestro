@@ -11,6 +11,21 @@ async fn main() {
 
     let specta_builder = tauri_specta::Builder::<tauri::Wry>::new();
 
+    // #[cfg(debug_assertions)]
+    // {
+    //     let devtools = tauri_plugin_devtools::init();
+    //     builder = builder.plugin(devtools);
+    // }
+
+    #[cfg(all(debug_assertions, not(mobile)))]
+    specta_builder
+        .export(
+            specta_typescript::Typescript::default()
+                .formatter(specta_typescript::formatter::prettier),
+            "../src/bindings.ts",
+        )
+        .expect("failed to export typescript bindings");
+
     builder
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_dialog::init())
@@ -25,5 +40,5 @@ async fn main() {
             Ok(())
         })
         .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .expect("error while running osu maestro");
 }
