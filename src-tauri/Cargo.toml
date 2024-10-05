@@ -12,11 +12,16 @@ tauri-build = { version = "2.0.0", features = [] }
 
 [dependencies]
 # tauri related
-tauri = { version = "2.0.0", features = [] }
-tauri-plugin-shell = "2.0.0-rc"
-tauri-plugin-dialog = "2.0.0-rc"
-tauri-plugin-websocket = "2.0.0-rc"
-# tauri-plugin-devtools = "2.0.0-rc"
+tauri = { version = "2.0.1", features = [] }
+tauri-plugin-shell = "2.0.1"
+tauri-plugin-dialog = "2.0.1"
+tauri-plugin-websocket = "2.0.1"
+tauri-plugin-devtools = "2.0.0"
+tauri-specta = { version = "=2.0.0-rc.20", features = [
+    "derive",
+    "javascript",
+    "typescript",
+] }
 
 # async runtime
 tokio = { version = "1.40.0", features = ["full"] }
@@ -56,14 +61,11 @@ futures = "0.3.30"
 futures-util = "0.3.30"
 chrono = "0.4.38"
 once_cell = "1.19.0"
-config = "0.14.0"
 specta = "=2.0.0-rc.20"
 specta-typescript = "0.0.7"
-tauri-specta = { version = "=2.0.0-rc.20", features = [
-    "derive",
-    "javascript",
-    "typescript",
-] }
+reqwest = "0.12.8"
+zip = "2.2.0"
+tempfile = "3.13.0"
 
 
 # Optimize for smaller binary size

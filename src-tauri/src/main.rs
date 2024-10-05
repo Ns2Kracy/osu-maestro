@@ -1,21 +1,24 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use osu_maestro::{logger, server};
+use osu_maestro::server;
 
 #[tokio::main]
 async fn main() {
-    logger::init_tracing().await;
+    #[cfg(not(debug_assertions))]
+    {
+        use osu_maestro::logger;
+        logger::init_tracing();
+    }
 
-    let builder = tauri::Builder::default();
+    let mut builder = tauri::Builder::default();
+
+    #[cfg(debug_assertions)]
+    {
+        builder = builder.plugin(tauri_plugin_devtools::init())
+    }
 
     let specta_builder = tauri_specta::Builder::<tauri::Wry>::new();
-
-    // #[cfg(debug_assertions)]
-    // {
-    //     let devtools = tauri_plugin_devtools::init();
-    //     builder = builder.plugin(devtools);
-    // }
 
     #[cfg(all(debug_assertions, not(mobile)))]
     specta_builder

@@ -1,6 +1,6 @@
 use tracing_subscriber::{fmt::time::ChronoUtc, prelude::*, util::SubscriberInitExt};
 
-pub async fn init_tracing() {
+pub fn init_tracing() {
     let appender = tracing_appender::rolling::daily("./logs", "stargazer.log");
 
     let timer = ChronoUtc::new("%F %T".to_string());
