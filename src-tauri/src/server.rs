@@ -2,16 +2,26 @@ use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 
 use axum::Router;
 use tokio::net::TcpListener;
-use tower_http::{compression::CompressionLayer, cors::CorsLayer};
+use tower_http::{
+    compression::CompressionLayer,
+    cors::CorsLayer,
+    trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer},
+};
 
 use crate::graceful_shutdown::shutdown_signal;
 
 pub async fn init_server() -> anyhow::Result<()> {
     let app = Router::new()
         .layer(CompressionLayer::new())
-        .layer(CorsLayer::permissive());
+        .layer(CorsLayer::permissive())
+        .layer(
+            TraceLayer::new_for_http()
+                .make_span_with(DefaultMakeSpan::new().include_headers(true))
+                .on_request(DefaultOnRequest::new().level(tracing::Level::INFO))
+                .on_response(DefaultOnResponse::new().level(tracing::Level::INFO)),
+        );
 
-    let address = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 8080);
+    let address = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 0);
     let listener = TcpListener::bind(address).await?;
 
     axum::serve(listener, app.into_make_service())

@@ -8,15 +8,24 @@ repository = "https://github.com/Ns2KRacy/maestro"
 edition = "2021"
 
 [build-dependencies]
-tauri-build = { version = "2.0.0", features = [] }
+tauri-build = { version = "2.0.2", features = [] }
 
 [dependencies]
 # tauri related
-tauri = { version = "2.0.1", features = [] }
-tauri-plugin-shell = "2.0.1"
-tauri-plugin-dialog = "2.0.1"
-tauri-plugin-websocket = "2.0.1"
+tauri = { version = "2.0.6", features = [] }
+tauri-plugin-shell = "2.0.2"
+tauri-plugin-dialog = "2.0.3"
 tauri-plugin-devtools = "2.0.0"
+tauri-plugin-websocket = "2.0.1"
+tauri-plugin-notification = "2.0.1"
+tauri-plugin-global-shortcut = "2.0.1"
+tauri-plugin-clipboard-manager = "2.0.1"
+tauri-plugin-positioner = { version = "2.0.2", features = ["tray-icon"] }
+tauri-plugin-fs = { version = "2.0.3", features = [
+    "notify",
+    "notify-debouncer-full",
+    "watch",
+] }
 tauri-specta = { version = "=2.0.0-rc.20", features = [
     "derive",
     "javascript",
@@ -27,21 +36,21 @@ tauri-specta = { version = "=2.0.0-rc.20", features = [
 tokio = { version = "1.40.0", features = ["full"] }
 
 # serialization and deserialization
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+serde = { version = "1.0.211", features = ["derive"] }
+serde_json = "1.0.132"
 
 # openapi
-utoipa = { version = "4.2.3", features = ["axum_extras", "openapi_extensions"] }
-utoipa-redoc = { version = "4.0.0", features = ["axum"] }
+utoipa = { version = "5.1.1", features = ["axum_extras", "openapi_extensions"] }
+utoipa-redoc = { version = "5.0.0", features = ["axum"] }
 
 # error handling
-anyhow = "1.0.86"
-thiserror = "1.0.63"
+anyhow = "1.0.90"
+thiserror = "1.0.64"
 
 # web framework
 axum = { version = "0.7.7", features = ["tracing", "ws"] }
-axum-extra = { version = "0.9.3", features = ["cookie", "typed-header"] }
-hyper = { version = "1.4.1", features = ["full"] }
+axum-extra = { version = "0.9.4", features = ["cookie", "typed-header"] }
+hyper = { version = "1.5.0", features = ["full"] }
 tower = { version = "0.5.1", features = ["full"] }
 tower-http = { version = "0.6.1", features = ["full"] }
 
@@ -57,21 +66,12 @@ tracing-appender = "0.2.3"
 tracing-subscriber = { version = "0.3.18", features = ["chrono"] }
 
 # utility
-futures = "0.3.30"
-futures-util = "0.3.30"
+futures = "0.3.31"
+futures-util = "0.3.31"
 chrono = "0.4.38"
-once_cell = "1.19.0"
+once_cell = "1.20.2"
 specta = "=2.0.0-rc.20"
 specta-typescript = "0.0.7"
 reqwest = "0.12.8"
 zip = "2.2.0"
 tempfile = "3.13.0"
-
-
-# Optimize for smaller binary size
-[profile.release]
-panic = "abort"   # Strip expensive panic clean-up logic
-codegen-units = 1 # Compile crates one after another so the compiler can optimize better
-lto = true        # Enables link to optimizations
-opt-level = "s"   # Optimize for binary size
-strip = true      # Remove debug symbols

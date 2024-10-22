@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-solid";
 import { Show } from "solid-js";
 
 import { Button } from "~/components/ui/button";
-import { Toggle } from "./ui/toggle";
+import { Toggle } from "~/components/ui/toggle";
 
 export function DarkModeToggle() {
 	const { setColorMode } = useColorMode();
