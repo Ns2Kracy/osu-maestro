@@ -48,5 +48,12 @@ pub async fn run() {
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
 
-    app.run(|_app_handle, _e| {})
+    app.run(|_app_handle, e| match e {
+        tauri::RunEvent::ExitRequested { api, code, .. } => {
+            if code.is_none() {
+                api.prevent_exit();
+            }
+        }
+        _ => {}
+    })
 }
