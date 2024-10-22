@@ -18,9 +18,6 @@ tauri-plugin-dialog = "2.0.3"
 tauri-plugin-devtools = "2.0.0"
 tauri-plugin-websocket = "2.0.1"
 tauri-plugin-notification = "2.0.1"
-tauri-plugin-global-shortcut = "2.0.1"
-tauri-plugin-clipboard-manager = "2.0.1"
-tauri-plugin-positioner = { version = "2.0.2", features = ["tray-icon"] }
 tauri-plugin-fs = { version = "2.0.3", features = [
     "notify",
     "notify-debouncer-full",

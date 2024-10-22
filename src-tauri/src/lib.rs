@@ -34,7 +34,7 @@ pub async fn run() {
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_dialog::init())
-        .plugin(tauri_plugin_positioner::init())
+        .plugin(tauri_plugin_websocket::init())
         .plugin(tauri_plugin_notification::init())
         .invoke_handler(specta_builder.invoke_handler())
         .setup(move |app| {

@@ -8,12 +8,29 @@
   "permissions": [
     "core:event:allow-listen",
     "core:event:default",
+    "websocket:default",
     "fs:default",
     {
       "identifier": "fs:allow-exists",
       "allow": [
         {
           "path": "$APPDATA/*"
+        }
+      ]
+    },
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "exec-sh",
+          "cmd": "sh",
+          "args": [
+            "-c",
+            {
+              "validator": "\\S+"
+            }
+          ],
+          "sidecar": false
         }
       ]
     }
