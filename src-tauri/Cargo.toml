@@ -68,3 +68,4 @@ specta-typescript = "0.0.7"
 reqwest = "0.12.8"
 zip = "2.2.0"
 tempfile = "3.13.0"
+figment = { version = "0.10.19", features = ["env", "toml"] }

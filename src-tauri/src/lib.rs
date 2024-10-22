@@ -1,7 +1,9 @@
+use core::server;
+
+pub mod core;
 pub mod error;
 pub mod overlay;
 pub mod routes;
-pub mod server;
 pub mod utils;
 
 pub async fn run() {
