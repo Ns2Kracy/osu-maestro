@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
-  "productName": "osu-maestro",
+  "productName": "Osu Maestro",
   "identifier": "osu-maestro.ns2kracy.com",
   "build": {
     "beforeDevCommand": "bun dev",

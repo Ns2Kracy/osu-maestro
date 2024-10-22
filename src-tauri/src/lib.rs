@@ -7,16 +7,13 @@ pub mod server;
 pub mod utils;
 
 pub async fn run() {
+    logger::init_tracing();
+
     let mut builder = tauri::Builder::default();
 
     #[cfg(debug_assertions)]
     {
         builder = builder.plugin(tauri_plugin_devtools::init());
-    }
-
-    #[cfg(not(debug_assertions))]
-    {
-        logger::init_tracing();
     }
 
     let specta_builder = tauri_specta::Builder::<tauri::Wry>::new();

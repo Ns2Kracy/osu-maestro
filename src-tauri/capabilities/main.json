@@ -9,6 +9,7 @@
     "core:event:allow-listen",
     "core:event:default",
     "websocket:default",
+    "log:default",
     "fs:default",
     {
       "identifier": "fs:allow-exists",
