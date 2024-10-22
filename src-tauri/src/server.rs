@@ -1,6 +1,6 @@
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 
-use axum::{routing::get, Router};
+use axum::Router;
 use tokio::net::TcpListener;
 use tower_http::{
     compression::CompressionLayer,
@@ -8,11 +8,10 @@ use tower_http::{
     trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer},
 };
 
-use crate::graceful_shutdown::shutdown_signal;
+use crate::utils::graceful_shutdown::shutdown_signal;
 
 pub async fn init_server() -> anyhow::Result<()> {
     let app = Router::new()
-        .route("/", get(root))
         .layer(CompressionLayer::new())
         .layer(CorsLayer::permissive())
         .layer(
@@ -22,7 +21,7 @@ pub async fn init_server() -> anyhow::Result<()> {
                 .on_response(DefaultOnResponse::new().level(tracing::Level::INFO)),
         );
 
-    let address = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 0);
+    let address = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 6500);
     let listener = TcpListener::bind(address).await?;
 
     tracing::info!("listening on {}", listener.local_addr()?);
@@ -32,8 +31,4 @@ pub async fn init_server() -> anyhow::Result<()> {
         .await?;
 
     Ok(())
-}
-
-async fn root() -> &'static str {
-    "Hello, World!"
 }

@@ -1,19 +1,20 @@
 pub mod error;
-pub mod graceful_shutdown;
-pub mod logger;
 pub mod overlay;
 pub mod routes;
 pub mod server;
 pub mod utils;
 
 pub async fn run() {
-    logger::init_tracing();
-
     let mut builder = tauri::Builder::default();
 
     #[cfg(debug_assertions)]
     {
         builder = builder.plugin(tauri_plugin_devtools::init());
+    }
+
+    #[cfg(not(debug_assertions))]
+    {
+        utils::logger::init_tracing();
     }
 
     let specta_builder = tauri_specta::Builder::<tauri::Wry>::new();
@@ -48,12 +49,11 @@ pub async fn run() {
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
 
-    app.run(|_app_handle, e| match e {
-        tauri::RunEvent::ExitRequested { api, code, .. } => {
+    app.run(|_app_handle, e| {
+        if let tauri::RunEvent::ExitRequested { api, code, .. } = e {
             if code.is_none() {
                 api.prevent_exit();
             }
         }
-        _ => {}
     })
 }
