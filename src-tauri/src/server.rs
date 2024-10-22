@@ -8,10 +8,11 @@ use tower_http::{
     trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer},
 };
 
-use crate::utils::graceful_shutdown::shutdown_signal;
+use crate::{routes, utils::graceful_shutdown::shutdown_signal};
 
 pub async fn init_server() -> anyhow::Result<()> {
     let app = Router::new()
+        .merge(routes::mount())
         .layer(CompressionLayer::new())
         .layer(CorsLayer::permissive())
         .layer(
@@ -26,9 +27,12 @@ pub async fn init_server() -> anyhow::Result<()> {
 
     tracing::info!("listening on {}", listener.local_addr()?);
 
-    axum::serve(listener, app.into_make_service())
-        .with_graceful_shutdown(shutdown_signal())
-        .await?;
+    axum::serve(
+        listener,
+        app.into_make_service_with_connect_info::<SocketAddr>(),
+    )
+    .with_graceful_shutdown(shutdown_signal())
+    .await?;
 
     Ok(())
 }
