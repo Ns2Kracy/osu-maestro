@@ -26,15 +26,16 @@
     "@solidjs/start": "1.0.9",
     "@tanstack/solid-query": "5.59.13",
     "@tauri-apps/api": "2.0.3",
-    "@tauri-apps/plugin-dialog": "^2.0.1",
-    "@tauri-apps/plugin-fs": "^2.0.1",
-    "@tauri-apps/plugin-notification": "^2.0.0",
-    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@tauri-apps/plugin-dialog": "2.0.1",
+    "@tauri-apps/plugin-fs": "2.0.1",
+    "@tauri-apps/plugin-notification": "2.0.0",
+    "@tauri-apps/plugin-shell": "2.0.1",
     "@tauri-apps/plugin-websocket": "2.0.0",
     "chart.js": "4.4.5",
     "class-variance-authority": "0.7.0",
     "cmdk-solid": "1.1.0",
     "embla-carousel-solid": "8.3.0",
+    "es-toolkit": "^1.25.2",
     "lucide-solid": "0.453.0",
     "solid-js": "1.9.2",
     "solid-sonner": "0.2.8",
@@ -44,7 +45,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@tauri-apps/cli": "2.0.4",
-    "@types/bun": "1.1.11",
+    "@types/bun": "1.1.12",
     "autoprefixer": "10.4.20",
     "internal-ip": "8.0.0",
     "postcss": "8.4.47",
@@ -52,5 +53,7 @@
     "tailwindcss-animate": "1.0.7",
     "typescript": "5.6.3"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }
